@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>智慧政务大数据分析平台</title>
+		<link rel="stylesheet" type="text/css" href="css/iview.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>	
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/iview.min.js"></script>
+		<script src="js/en-US.js"></script>
+		<script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
+		<script src="http://cdn.highcharts.com.cn/highcharts/highcharts-3d.js"></script>
+	</head>
+
+	<body style="height: 100%;">						
+		<div id="index_box">
+			<div class="index_header">
+				<div class="h_left">
+					<p class="time">09:35:26</p>
+					<p class="date">
+						<span>2019/04/15</span> 
+						<span>星期一</span>
+					</p>
+				</div>
+				<div class="h_center">
+					智慧政务大数据分析平台
+				</div>
+				<div class="h_right">
+					<input type="text" class="pagevalue" />
+					<div class="pagevalue_sel">办件情况</div>
+					<ul class="hiddenul">
+						<li>监督情况</li>
+					</ul>					
+				</div>
+			</div>
+			<div class="index_contont">
+				<div class="ct_one">
+					<div class="totalbkind">
+						<p class="totalbkind_h5">咨询趋势</p>
+						<div id="zxqsfxfuc" style="width:100%;height:100%;"></div>
+					</div>
+					<div class="totalbkind" style="margin-top: 2%;">
+						<p class="totalbkind_h5">投诉趋势</p>
+						<div id="tsqsfxfuc" style="width:100%;height:100%;"></div>
+					</div>
+					<div class="totalbkind" style="margin-top: 2%;height: 33.5%;">
+						<p class="totalbkind_h5">咨询部门TOP5</p>
+						<div id="zxdepartmenttop5" class="tablecommon" style="width:100%;height:100%;">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<thead>
+									<tr>
+										<th colspan="10">序号</th>
+										<th colspan="75">所在部门</th>
+										<th colspan="15">咨询数</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="ct_two">
+					<div id="echartMap"></div>
+					<div class="totalbkind" style="margin-top: 3%;height: 33.5%;width: 48%;float: left;margin-left: 1%;">
+						<p class="totalbkind_h5">咨询事项TOP5</p>
+						<div class="tablecommon" style="width:100%;height:100%;">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<thead>
+									<tr>
+										<th colspan="10">序号</th>
+										<th colspan="75">事项名称</th>
+										<th colspan="15">咨询数</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="totalbkind" style="margin-top: 3%;height: 33.5%;width: 48%;float: left;margin-left: 3%;">
+						<p class="totalbkind_h5">投诉部门TOP5</p>
+						<div class="tablecommon" style="width:100%;height:100%;">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<thead>
+									<tr>
+										<th colspan="10">序号</th>
+										<th colspan="75">所在部门</th>
+										<th colspan="15">咨询数</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="ct_three">
+					<div class="totalbkind">
+						<p class="totalbkind_h5">咨询回复情况</p>
+						<div id="zxreback" style="width: 100%;height: 100%;"></div>
+					</div>
+					<div class="totalbkind"  style="margin-top: 2%;">
+						<p class="totalbkind_h5">投诉回复情况</p>
+						<div id="tsreback" style="width: 100%;height: 100%;"></div>
+					</div>
+					<div class="totalbkind"  style="margin-top: 2%;height: 33.5%;">
+						<p class="totalbkind_h5">投诉事项TOP5</p>
+						<div class="tablecommon" style="width:100%;height:100%;">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<thead>
+									<tr>
+										<th colspan="10">序号</th>
+										<th colspan="75">事项名称</th>
+										<th colspan="15">咨询数</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+									<tr>
+										<td colspan="10">1</td>
+										<td colspan="75">事业运营部</td>
+										<td colspan="15">53</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/guizhou.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index2.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

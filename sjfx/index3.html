@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>智慧政务大数据分析平台</title>
+		<link rel="stylesheet" type="text/css" href="css/iview.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>	
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/iview.min.js"></script>
+		<script src="js/en-US.js"></script>
+	</head>
+
+	<body style="height: 100%;">						
+		<div id="index_box">
+			<div class="index_header">
+				<div class="h_left">
+					<p class="time">09:35:26</p>
+					<p class="date">
+						<span>2019/04/15</span> 
+						<span>星期一</span>
+					</p>
+				</div>
+				<div class="h_center">
+					智慧政务大数据分析平台
+				</div>
+				<div class="h_right">
+					<input type="text" class="pagevalue" />
+					<div class="pagevalue_sel">贵人服务</div>
+					<ul class="hiddenul">
+						<li>贵人服务</li>
+					</ul>					
+				</div>
+			</div>
+			<div class="index_contont">
+				<div class="ct_one">
+					<div class="usernumshow">
+						<div>
+							1855522	<br />
+							<span>用户关注量</span>
+						</div>
+						<div>
+							485552	<br />
+							<span>用户注册量</span>
+						</div>
+						<div>
+							0.3 <br />
+							<span>留存率</span>
+						</div>
+					</div>
+					<div class="totalbkind">
+						<p class="totalbkind_h5">新增用户数分析</p>
+						<div id="newuserzc" style="width:100%;height:100%;"></div>
+						<select class="userfxsel" v-model="userfxselval" @change="newuserzcchangefuc()">
+							<option value="1">按日分析</option>
+							<option value="2">按月分析</option>
+						</select>
+					</div>
+					<div class="totalbkind" style="margin-top: 2%;height: 51.4%;">
+						<p class="totalbkind_h5" style="padding-top: 1.35vh;">新增用户数分析</p>
+						<div class="tableuser" style="width:100%;height:85%;">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<thead>
+									<tr>
+										<th colspan="15">序号</th>
+										<th colspan="50">姓名</th>
+										<th colspan="20">活跃天数</th>
+									</tr>
+								</thead>
+								<tbody id="userpangesarr">
+									<tr v-for="(item,idx) in userarr">
+										<td colspan="15">{{(nowpage-1)*2 + idx +1}}</td>
+										<td colspan="50">{{item.name}}</td>
+										<td colspan="20">{{item.num}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="userpanges">
+								<ul>
+									<li v-bind:class="nowpage==1?'cur':''" @click="userpage(1)"></li>
+									<li v-bind:class="nowpage==2?'cur':''" @click="userpage(2)"></li>
+									<li v-bind:class="nowpage==3?'cur':''" @click="userpage(3)"></li>
+									<li v-bind:class="nowpage==4?'cur':''" @click="userpage(4)"></li>
+									<li v-bind:class="nowpage==5?'cur':''" @click="userpage(5)"></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ct_two">
+					<div id="echartMap"></div>
+					<div class="ywlbmfb">
+						<p class="totalbkind_h5">新增用户数分析</p>
+						<div v-show="userhabbitselval==1" class="userhabbitnum" style="width: 100%;height: 20%;">
+							<div>
+								<p>预约数</p>
+								<p>321</p>
+							</div>
+							<div>
+								<p>办件数</p>
+								<p>258</p>
+							</div>
+							<div>
+								<p>评价数</p>
+								<p>1125</p>
+							</div>
+						</div>
+						<div v-show="userhabbitselval==2" class="userhabbitnum" style="width: 100%;height: 20%;">
+							<div style="margin-left: 4vw;">
+								<p>咨询数</p>
+								<p>321</p>
+							</div>
+							<div style="margin-left: 8vw;">
+								<p>投诉数</p>
+								<p>258</p>
+							</div>
+						</div>
+						<div id="newuserhabbit" style="width: 100%;height: 65%;"></div>
+						<select class="userhabbit" v-model="userhabbitselval" @change="newuserhabbitchangefuc()">
+							<option value="1">预约板件情况</option>
+							<option value="2">咨询投诉</option>
+						</select>
+					</div>
+				</div>
+				<div class="ct_three">
+					<div class="totalbkind" style="height: 46%;">
+						<p class="totalbkind_h5" style="padding-top: 1.2vh;">办件类型分布</p>
+						<div id="userbjkindfx" style="width: 100%;height: 85%;"></div>
+					</div>
+					<div class="totalbkind" style="margin-top: 2%;height: 51.4%;">
+						<p class="totalbkind_h5" style="padding-top: 1.35vh;">热频事项TOP10</p>
+						<div id="totalbkind" class="hotitemtable" style="width:100%;height:85%;">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<thead>
+									<tr>
+										<th colspan="15">序号</th>
+										<th colspan="50">事项名称</th>
+										<th colspan="20">申请次数</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+									<tr>
+										<td colspan="15">1</td>
+										<td colspan="50">事业运营部</td>
+										<td colspan="20">53</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/guizhou.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index3.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
